@@ -1,4 +1,4 @@
-# Calendar-Reservation-System-Project
+# Calendar Reservation System Project
 This project provides a robust calendar system designed for users to make and manage reservations seamlessly. 
 
 ## Key features include:
