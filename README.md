@@ -1,7 +1,7 @@
 # Calendar-Reservation-System-Project
 This project provides a robust calendar system designed for users to make and manage reservations seamlessly. 
 
-# Key features include:
+## Key features include:
 **User-Friendly Interface:** Intuitive design allowing for easy navigation and reservation management.
 **Flexible Scheduling:** Supports various types of reservations with customizable time slots.
 **Notification System:** Sends reminders and updates to ensure users never miss reservations.
