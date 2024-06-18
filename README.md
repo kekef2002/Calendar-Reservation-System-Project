@@ -9,3 +9,5 @@ This project provides a robust calendar system designed for users to make and ma
 - **Integration Capabilities:** Compatible with external calendars and third-party services for enhanced functionality.
 
 It is ideal for businesses, community groups, and individuals looking to streamline their scheduling processes.
+
+**Version**
