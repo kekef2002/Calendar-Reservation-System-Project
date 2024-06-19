@@ -10,4 +10,4 @@ This project provides a robust calendar system designed for users to make and ma
 
 It is ideal for businesses, community groups, and individuals looking to streamline their scheduling processes.
 
-**Version**
+**Calendar Prototype link:** https://www.figma.com/team_invite/redeem/Yl8PDmp0rfIqarZrDU3Wya
