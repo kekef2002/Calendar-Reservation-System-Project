@@ -10,4 +10,4 @@ This project provides a robust calendar system designed for users to make and ma
 
 It is ideal for businesses, community groups, and individuals looking to streamline their scheduling processes.
 
-**Calendar Prototype link:** https://www.figma.com/team_invite/redeem/Yl8PDmp0rfIqarZrDU3Wya
+**Calendar Prototype link from Figma:** https://www.figma.com/design/fSXXEiFmx5MXc47KjSvaD0/Calendar-Reservation-System-Project_LoFi-design?node-id=0-1&t=Cc5Yyyq0QMPcuaJ8-1
