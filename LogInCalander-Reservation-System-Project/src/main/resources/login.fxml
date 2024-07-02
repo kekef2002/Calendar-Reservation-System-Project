@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.logincalanderreservationsystemproject.Controller">
+    <VBox alignment="CENTER" spacing="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+        <Label text="Sign in" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+        <VBox spacing="10.0">
+            <TextField promptText="Username..." style="-fx-pref-width: 200px; -fx-padding: 10;" />
+            <PasswordField promptText="Password..." style="-fx-pref-width: 200px; -fx-padding: 10;" />
+        </VBox>
+        <Button text="Sign up with username" style="-fx-background-color: black; -fx-text-fill: white; -fx-padding: 10 20;" />
+        <Hyperlink text="Create Your Account" style="-fx-text-fill: #1E90FF;" onAction="#handleCreateAccountLink"/>
+    </VBox>
+</AnchorPane>
