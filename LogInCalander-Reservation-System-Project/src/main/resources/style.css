@@ -1,0 +1,31 @@
+/* style.css */
+
+.root {
+    -fx-font-family: 'Arial';
+    -fx-padding: 20;
+}
+
+.label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.text-field {
+    -fx-pref-width: 200px;
+    -fx-padding: 10;
+}
+
+.password-field {
+    -fx-pref-width: 200px;
+    -fx-padding: 10;
+}
+
+.button {
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-padding: 10 20;
+}
+
+.hyperlink {
+    -fx-text-fill: #1E90FF;
+}
