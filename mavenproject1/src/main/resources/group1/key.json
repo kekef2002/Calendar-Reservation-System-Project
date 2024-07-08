@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "calendar-reservation-system",
+  "private_key_id": "885e47635888fa8ae215a1b52fa87a336b5e66cd",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDJhEDYGpSnC5zf\nW6n8TalDeX5C+eJC9Saay+QMDyGLn/JJRIl/ylyzXIBq6MLmFvvPEtNeXtTczxDr\nzWWGWdCBj2fch/GM/LceEIuqia0KpKGXe1wlw796FcoxEDWnOQVw1Cld7DjwI4gh\nJcP6vnpYguzLU1aOz8XMxXSWFUxs+08VkNxS7miv/bly7nXkC77G+hpT9Ff+6qxr\ndWegZTon9gdqUKcwYX999XnKG7FwdvIIlwtyxPHYkGbjRhD5qW4m++/kIfhfNJiZ\n/7vmNm7LluVZea7ya9xUuo+Dwm4ZZh1eHJRvIO1URZyKd5VEJpstdFRYyIEp8jgM\nGXGpvpRTAgMBAAECggEAJHYrjW5xyy/MuJVLUn1yzOSktdWk3NyimYuevZfXR/4u\nxpcCEf85erKYAcAP07YA5dzQJdkexr0ooKHPZtnFYkviTQLD7/Ch6Wyw+LBkgPJ8\n0n3dlG+wq5RZuzrlmlY0589blMTzIHAtZ2H/7dSdKnq2AawYk0qAzaZEjAtagrU7\nhV8vmgpLU9QuBy9FYiEcLK6t/jLO86nNqVwEOfuFM6R7jhyWOXl7M6DZSxLJpCqG\npsh7boRIxtr5XXsNNZrTQcMIZTJvP2jnVROjV4yRh5MYnOtV4IS9dD5magUyii2D\nUM6UsceYQEXjEAN/yZDw7IF2CEa2Vw8ObeVMeBpVgQKBgQD23h2zp37xTPNQ0Ybs\nkHH1A70fby5U7mV1F/5vqcaf/8b8Qjl7BpKF6pCFTjB7oJTCcYVWlOHU54AZpfAQ\nj/3WY/goVge1kCyAiSZxX1zPo8cUfadwIpeQ9wGtPojKB/8+shXZlm+naIeYomu0\nxUToFpVfMMRMQBedDkjNODPSMwKBgQDQ+KeDJLk6M5lfcodYl403hkvRjcDZWEPn\nKc4nMx3oSIfVhGayyi0sgFoY+IcQ3+YY79FeA9it6E3TNbpJzO9R40MeHwgo8t2i\naEMyXWbKBxziQkhnv1J1vsnhszT3MsboYUnAlM+gVm5d7xJ8xoptU4bzOA/7Gocy\nhjgLemtVYQKBgQCe38mbsiLnJk+85mt/2WINfg97qHDX5ejTl9J+iHO0ysaD2Bbo\nDw3DM3c4414eYfT6wlY+p2hDPY1adElwT0rca8/sHZmuho+tVRaxhd7UHqHjlQ5q\nA0kp2V1x4jnkU4s4DSI0uzU2NvZ1C6pnV0GGX+pXranXLLRFtkiyEgZ/swKBgB/m\n5gPSVmi5Od/lZx4yPL/OQ8LhBiDoJa2jpzI6zoUIlZwWE2uWC+FwUtDfGBeOZt1F\nt0vIAItEHKVy3Vao75wrurJdgGxn70f87M1Cjw+mmFU+UzlrbtZE4yMOrbZTTSRq\nvcylqzDKIR08AzGDSdy41LBKzb3C5gLjlKjD7qDhAoGABJ0/5qQ5ykUEYa5Vzmba\naIQCcKyptMg0CCKzWECt5gANBnNx3d5UujXLJmFwNoCe+Y+c6GBIhmKKBhi1WnvL\nJL/Rz/xODkzM/pD8Tgv7bXHLSQryLCcxIhxG5nzBhtJVFT1Ev5oQTFkAKjEipXOE\nePx8d7xJg2aW2PofYgqXd6I=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-qcs35@calendar-reservation-system.iam.gserviceaccount.com",
+  "client_id": "103685321432355723811",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-qcs35%40calendar-reservation-system.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
