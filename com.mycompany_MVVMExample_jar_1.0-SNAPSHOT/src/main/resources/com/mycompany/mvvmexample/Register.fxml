@@ -14,38 +14,38 @@
     <GridPane hgap="10" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="232.0" prefWidth="350.0" vgap="10">
         <Label text="First Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
         <TextField fx:id="firstNameField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="235.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-        
+
         <Label text="Last Name:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
         <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-        
+
         <Label text="Create Username:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
         <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-        
+
         <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
         <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-        
+
         <Label text="New Password:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
         <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-        
+
         <Label text="Confirm Password:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
         <PasswordField fx:id="confirmPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-        
+
         <Button fx:id="registerButton" text="Register" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
-      <columnConstraints>
-         <ColumnConstraints />
-         <ColumnConstraints />
-      </columnConstraints>
-      <rowConstraints>
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-      </rowConstraints>
-      <VBox.margin>
-         <Insets left="150.0" right="150.0" top="200.0" />
-      </VBox.margin>
+        <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+        </rowConstraints>
+        <VBox.margin>
+            <Insets left="150.0" right="150.0" top="200.0" />
+        </VBox.margin>
     </GridPane>
 </VBox>

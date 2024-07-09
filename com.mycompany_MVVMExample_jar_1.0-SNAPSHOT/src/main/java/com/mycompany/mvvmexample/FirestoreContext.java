@@ -5,22 +5,37 @@ import com.google.cloud.firestore.Firestore;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
+
 import java.io.IOException;
 import java.io.InputStream;
+
+/**
+ * FXML Controller class
+ *
+ * @author kekef
+ */
 
 public class FirestoreContext {
 
     private Firestore firestore;
 
     public FirestoreContext() {
-        try (InputStream serviceAccount = getClass().getResourceAsStream("/key.json")) {
+        initializeFirebase();
+    }
+
+    private void initializeFirebase() {
+        try (InputStream serviceAccount = getClass().getResourceAsStream("/com/mycompany/mvvmexample/key.json")) {
             if (serviceAccount == null) {
-                throw new IOException("Resource not found: /key.json");
+                throw new IOException("Resource not found: /com/mycompany/mvvmexample/key.json");
             }
-            FirebaseOptions options = new FirebaseOptions.Builder()
-                    .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                    .build();
-            FirebaseApp.initializeApp(options);
+
+            if (FirebaseApp.getApps().isEmpty()) {
+                FirebaseOptions options = new FirebaseOptions.Builder()
+                        .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+                        .build();
+                FirebaseApp.initializeApp(options);
+            }
+
             this.firestore = FirestoreClient.getFirestore();
         } catch (IOException e) {
             e.printStackTrace();

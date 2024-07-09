@@ -57,7 +57,7 @@ public class LoginController {
 
     private void navigateTo(String fxml, String title) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/com.mycompany.mvvmexample/" + fxml));
+            Parent root = FXMLLoader.load(getClass().getResource(fxml));
             Stage stage = new Stage();
             stage.setTitle(title);
             stage.setScene(new Scene(root, 640, 480));

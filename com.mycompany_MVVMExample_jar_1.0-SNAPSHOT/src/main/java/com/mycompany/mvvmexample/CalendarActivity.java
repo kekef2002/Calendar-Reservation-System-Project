@@ -52,5 +52,5 @@ public class CalendarActivity {
                 ", clientName='" + clientName + '\'' +
                 ", serviceNo=" + serviceNo +
                 '}';
-    }    
+    }
 }

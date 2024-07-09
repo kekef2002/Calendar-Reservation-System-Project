@@ -1,30 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package com.mycompany.mvvmexample;
 
 import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+import java.time.ZonedDateTime;
+import java.util.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
-
-import java.io.IOException;
-import java.time.ZonedDateTime;
-import java.util.*;
 
 /**
  * FXML Controller class
@@ -32,8 +19,7 @@ import java.util.*;
  * @author kekef
  */
 
-
-public class CalendarViewController {
+public class CalendarViewController implements Initializable {
 
     ZonedDateTime dateFocus;
     ZonedDateTime today;
@@ -47,7 +33,7 @@ public class CalendarViewController {
     @FXML
     private FlowPane calendar;
 
-//    @Override
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         dateFocus = ZonedDateTime.now();
         today = ZonedDateTime.now();
@@ -154,19 +140,19 @@ public class CalendarViewController {
     private Map<Integer, List<CalendarActivity>> createCalendarMap(List<CalendarActivity> calendarActivities) {
         Map<Integer, List<CalendarActivity>> calendarActivityMap = new HashMap<>();
 
-        for (CalendarActivity activity: calendarActivities) {
+        for (CalendarActivity activity : calendarActivities) {
             int activityDate = activity.getDate().getDayOfMonth();
-            if(!calendarActivityMap.containsKey(activityDate)){
+            if (!calendarActivityMap.containsKey(activityDate)) {
                 calendarActivityMap.put(activityDate, List.of(activity));
             } else {
-                List<CalendarActivity> OldListByDate = calendarActivityMap.get(activityDate);
+                List<CalendarActivity> oldListByDate = calendarActivityMap.get(activityDate);
 
-                List<CalendarActivity> newList = new ArrayList<>(OldListByDate);
+                List<CalendarActivity> newList = new ArrayList<>(oldListByDate);
                 newList.add(activity);
                 calendarActivityMap.put(activityDate, newList);
             }
         }
-        return  calendarActivityMap;
+        return calendarActivityMap;
     }
 
     private Map<Integer, List<CalendarActivity>> getCalendarActivitiesMonth(ZonedDateTime dateFocus) {
@@ -176,33 +162,10 @@ public class CalendarViewController {
 
         Random random = new Random();
         for (int i = 0; i < 50; i++) {
-            ZonedDateTime time = ZonedDateTime.of(year, month, random.nextInt(27)+1, 16,0,0,0,dateFocus.getZone());
+            ZonedDateTime time = ZonedDateTime.of(year, month, random.nextInt(27) + 1, 16, 0, 0, 0, dateFocus.getZone());
             calendarActivities.add(new CalendarActivity(time, "Hans", 111111));
         }
 
         return createCalendarMap(calendarActivities);
     }
-    private void navigateToDashboard(int selectedDate) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com.mycompany.mvvmexample/Dashboard.fxml"));
-            Parent root = loader.load();
-
-            DashboardController controller = loader.getController();
-            controller.setSelectedDate(dateFocus.withDayOfMonth(selectedDate));
-
-            Stage stage = new Stage();
-            stage.setTitle("Dashboard");
-            stage.setScene(new Scene(root, 640, 480));
-            stage.show();
-
-            closeWindow();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void closeWindow() {
-        Stage stage = (Stage) calendar.getScene().getWindow();
-        stage.close();
-    }    
 }

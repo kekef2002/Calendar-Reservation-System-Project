@@ -31,22 +31,27 @@ public class MainPageController {
     }
 
     private void handleLoginButton() {
-        navigateTo("Login.fxml", "Login");
+        navigateTo("/com/mycompany/mvvmexample/Login.fxml", "Login");
     }
 
     private void handleSignUpButton() {
-        navigateTo("Register.fxml", "Register");
+        navigateTo("/com/mycompany/mvvmexample/Register.fxml", "Register");
     }
 
     private void navigateTo(String fxml, String title) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/com.mycompany.mvvmexample/" + fxml));
+            Parent root = FXMLLoader.load(getClass().getResource(fxml));
             Stage stage = new Stage();
             stage.setTitle(title);
             stage.setScene(new Scene(root, 640, 480));
             stage.show();
+            closeWindow();
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    private void closeWindow() {
+        Stage stage = (Stage) loginButton.getScene().getWindow();
+        stage.close();
     }
 }

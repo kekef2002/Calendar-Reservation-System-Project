@@ -7,6 +7,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * FXML Controller class
+ *
+ * @author kekef
+ */
+
 public class App extends Application {
 
     private Firestore db;

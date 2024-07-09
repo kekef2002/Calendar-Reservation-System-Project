@@ -12,10 +12,16 @@ import javafx.stage.Stage;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 
 /**
  * FXML Controller class
+ *
+ * @author kekef
  */
+
 public class RegisterController {
 
     @FXML
@@ -74,6 +80,18 @@ public class RegisterController {
             }
         } else {
             System.out.println("Passwords do not match!");
+        }
+    }
+    private void navigateTo(String fxml, String title) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource(fxml));
+            Stage stage = new Stage();
+            stage.setTitle(title);
+            stage.setScene(new Scene(root, 640, 480));
+            stage.show();
+            closeWindow();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
