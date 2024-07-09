@@ -4,8 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b096f38-2bfa-464a-b155-ec90e44b319f" name="Changes" comment="I created a front and back end of a version, but the firebase would not connect yet.">
+    <list default="true" id="7b096f38-2bfa-464a-b155-ec90e44b319f" name="Changes" comment="I created a front and back end of a version, but I don't know if the firebase is working yet.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com.mycompany_MVVMExample_jar_1.0-SNAPSHOT/src/main/java/com/mycompany/mvvmexample/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/com.mycompany_MVVMExample_jar_1.0-SNAPSHOT/src/main/java/com/mycompany/mvvmexample/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com.mycompany_MVVMExample_jar_1.0-SNAPSHOT/src/main/java/com/mycompany/mvvmexample/CalendarActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/com.mycompany_MVVMExample_jar_1.0-SNAPSHOT/src/main/java/com/mycompany/mvvmexample/CalendarActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com.mycompany_MVVMExample_jar_1.0-SNAPSHOT/src/main/java/com/mycompany/mvvmexample/CalendarViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/com.mycompany_MVVMExample_jar_1.0-SNAPSHOT/src/main/java/com/mycompany/mvvmexample/CalendarViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com.mycompany_MVVMExample_jar_1.0-SNAPSHOT/src/main/java/com/mycompany/mvvmexample/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/com.mycompany_MVVMExample_jar_1.0-SNAPSHOT/src/main/java/com/mycompany/mvvmexample/DashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com.mycompany_MVVMExample_jar_1.0-SNAPSHOT/src/main/java/com/mycompany/mvvmexample/FirestoreContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/com.mycompany_MVVMExample_jar_1.0-SNAPSHOT/src/main/java/com/mycompany/mvvmexample/FirestoreContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com.mycompany_MVVMExample_jar_1.0-SNAPSHOT/src/main/java/com/mycompany/mvvmexample/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/com.mycompany_MVVMExample_jar_1.0-SNAPSHOT/src/main/java/com/mycompany/mvvmexample/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com.mycompany_MVVMExample_jar_1.0-SNAPSHOT/src/main/java/com/mycompany/mvvmexample/MainPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/com.mycompany_MVVMExample_jar_1.0-SNAPSHOT/src/main/java/com/mycompany/mvvmexample/MainPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com.mycompany_MVVMExample_jar_1.0-SNAPSHOT/src/main/java/com/mycompany/mvvmexample/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/com.mycompany_MVVMExample_jar_1.0-SNAPSHOT/src/main/java/com/mycompany/mvvmexample/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com.mycompany_MVVMExample_jar_1.0-SNAPSHOT/src/main/resources/com/mycompany/mvvmexample/CalendarView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/com.mycompany_MVVMExample_jar_1.0-SNAPSHOT/src/main/resources/com/mycompany/mvvmexample/CalendarView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com.mycompany_MVVMExample_jar_1.0-SNAPSHOT/src/main/resources/com/mycompany/mvvmexample/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/com.mycompany_MVVMExample_jar_1.0-SNAPSHOT/src/main/resources/com/mycompany/mvvmexample/Dashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com.mycompany_MVVMExample_jar_1.0-SNAPSHOT/src/main/resources/com/mycompany/mvvmexample/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/com.mycompany_MVVMExample_jar_1.0-SNAPSHOT/src/main/resources/com/mycompany/mvvmexample/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com.mycompany_MVVMExample_jar_1.0-SNAPSHOT/src/main/resources/com/mycompany/mvvmexample/MainPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/com.mycompany_MVVMExample_jar_1.0-SNAPSHOT/src/main/resources/com/mycompany/mvvmexample/MainPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com.mycompany_MVVMExample_jar_1.0-SNAPSHOT/src/main/resources/com/mycompany/mvvmexample/Register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/com.mycompany_MVVMExample_jar_1.0-SNAPSHOT/src/main/resources/com/mycompany/mvvmexample/Register.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com.mycompany_MVVMExample_jar_1.0-SNAPSHOT/src/main/resources/com/mycompany/mvvmexample/key.json" beforeDir="false" afterPath="$PROJECT_DIR$/com.mycompany_MVVMExample_jar_1.0-SNAPSHOT/src/main/resources/com/mycompany/mvvmexample/key.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,13 +38,16 @@
   &quot;associatedIndex&quot;: 7
 }</component>
   <component name="ProjectId" id="2i4dEvKW6rthlUZy6ByewItDAXc" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
@@ -66,6 +83,8 @@
       <workItem from="1719883898842" duration="60000" />
       <workItem from="1719884055992" duration="125000" />
       <workItem from="1720410134381" duration="781000" />
+      <workItem from="1720487352937" duration="466000" />
+      <workItem from="1720500731188" duration="809000" />
     </task>
     <task id="LOCAL-00001" summary="Creating WRSPM Project">
       <option name="closed" value="true" />
@@ -91,15 +110,36 @@
       <option name="project" value="LOCAL" />
       <updated>1720410298768</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="I created a front and back end of a version, but I don't know if the firebase is working yet.">
+      <option name="closed" value="true" />
+      <created>1720487461604</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1720487461604</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Creating WRSPM Project" />
     <MESSAGE value="I created a front and back end of a version, but the firebase would not connect yet." />
-    <option name="LAST_COMMIT_MESSAGE" value="I created a front and back end of a version, but the firebase would not connect yet." />
+    <MESSAGE value="I created a front and back end of a version, but I don't know if the firebase is working yet." />
+    <option name="LAST_COMMIT_MESSAGE" value="I created a front and back end of a version, but I don't know if the firebase is working yet." />
   </component>
 </project>
