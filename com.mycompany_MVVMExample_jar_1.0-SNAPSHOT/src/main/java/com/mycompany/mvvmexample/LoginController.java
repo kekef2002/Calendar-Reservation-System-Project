@@ -37,6 +37,7 @@ public class LoginController {
         loginButton.setOnAction(event -> loginUser());
     }
 
+    @FXML
     private void loginUser() {
         String username = usernameField.getText();
         String password = passwordField.getText();
@@ -71,5 +72,11 @@ public class LoginController {
     private void closeWindow() {
         Stage stage = (Stage) loginButton.getScene().getWindow();
         stage.close();
+    }
+
+
+    @FXML
+    private void navigateToRegister() {
+        navigateTo("Register.fxml", "Register");
     }
 }
