@@ -9,7 +9,7 @@
 <?import javafx.geometry.*?>
 
 <BorderPane styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml" fx:controller="com.mycompany.mvvmexample.DashboardController">
-
+    
     <!-- Header -->
     <top>
         <HBox alignment="CENTER" spacing="10">

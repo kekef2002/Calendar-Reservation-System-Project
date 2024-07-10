@@ -19,8 +19,7 @@ import java.util.concurrent.ExecutionException;
  *
  * @author kekef
  */
-
-public class LoginController {
+public class SigninController {
 
     @FXML
     private TextField usernameField;
@@ -31,6 +30,9 @@ public class LoginController {
     @FXML
     private Button loginButton;
 
+    @FXML
+    private Button createAccountButton;
+
     private Firestore db;
 
     @FXML
@@ -38,6 +40,7 @@ public class LoginController {
         FirestoreContext firestoreContext = new FirestoreContext();
         db = firestoreContext.getFirestore();
         loginButton.setOnAction(event -> loginUser());
+        createAccountButton.setOnAction(event -> openRegisterPage());
     }
 
     private void loginUser() {
@@ -58,9 +61,13 @@ public class LoginController {
         }
     }
 
+    private void openRegisterPage() {
+        navigateTo("Register.fxml", "Register");
+    }
+
     private void navigateTo(String fxml, String title) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource(fxml));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/mycompany/mvvmexample/" + fxml));
             Stage stage = new Stage();
             stage.setTitle(title);
             stage.setScene(new Scene(root, 640, 480));

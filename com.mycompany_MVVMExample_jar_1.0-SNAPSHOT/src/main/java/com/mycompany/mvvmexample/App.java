@@ -7,12 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author kekef
- */
-
 public class App extends Application {
 
     private Firestore db;
@@ -22,8 +16,8 @@ public class App extends Application {
         FirestoreContext firestoreContext = new FirestoreContext();
         db = firestoreContext.getFirestore();
 
-        Parent root = FXMLLoader.load(getClass().getResource("MainPage.fxml"));
-        primaryStage.setTitle("Main Page");
+        Parent root = FXMLLoader.load(getClass().getResource("Signin.fxml"));
+        primaryStage.setTitle("Sign In");
         primaryStage.setScene(new Scene(root, 640, 480));
         primaryStage.show();
     }

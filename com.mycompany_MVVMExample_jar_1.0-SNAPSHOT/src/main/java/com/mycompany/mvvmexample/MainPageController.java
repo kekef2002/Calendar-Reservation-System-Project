@@ -53,5 +53,5 @@ public class MainPageController {
     private void closeWindow() {
         Stage stage = (Stage) loginButton.getScene().getWindow();
         stage.close();
-    }
+    }    
 }

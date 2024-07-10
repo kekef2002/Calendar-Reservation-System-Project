@@ -30,48 +30,49 @@ public class DashboardController {
     @FXML
     private Button confirmAppointmentButton;
 
+    @FXML
+    private Button cancelAppointmentButton;
+
     private ZonedDateTime selectedDate;
+
+    @FXML
+    private void initialize() {
+        confirmAppointmentButton.setOnAction(event -> saveAppointment());
+        cancelAppointmentButton.setOnAction(event -> cancelAppointment());
+    }
 
     public void setSelectedDate(ZonedDateTime selectedDate) {
         this.selectedDate = selectedDate;
     }
 
-    @FXML
-    private void initialize() {
-        confirmAppointmentButton.setOnAction(event -> confirmAppointment());
+    private void saveAppointment() {
+        // Save appointment logic here
+
+        closeWindow();
+        navigateToCalendarView();
     }
 
-    private void confirmAppointment() {
-        String name = nameField.getText();
-        String email = emailField.getText();
-        String phone = phoneField.getText();
+    private void cancelAppointment() {
+        // Cancel appointment logic here
 
-        CalendarActivity appointment = new CalendarActivity(selectedDate, name, 0);
-
-        FirestoreContext firestoreContext = new FirestoreContext();
-        Firestore db = firestoreContext.getFirestore();
-
-        db.collection("appointments").add(appointment).addListener(() -> {
-            System.out.println("Appointment saved successfully!");
-            navigateTo("CalendarView.fxml", "Calendar View");
-        }, Runnable::run);
-    }
-
-    private void navigateTo(String fxml, String title) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource(fxml));
-            Stage stage = new Stage();
-            stage.setTitle(title);
-            stage.setScene(new Scene(root, 640, 480));
-            stage.show();
-            closeWindow();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        closeWindow();
+        navigateToCalendarView();
     }
 
     private void closeWindow() {
         Stage stage = (Stage) confirmAppointmentButton.getScene().getWindow();
         stage.close();
+    }
+
+    private void navigateToCalendarView() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/com/mycompany/mvvmexample/CalendarView.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Calendar View");
+            stage.setScene(new Scene(root, 640, 480));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

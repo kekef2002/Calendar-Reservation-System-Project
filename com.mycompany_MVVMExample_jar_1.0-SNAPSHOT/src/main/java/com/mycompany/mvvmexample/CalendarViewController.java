@@ -12,7 +12,22 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import java.util.ResourceBundle;
+import javafx.fxml.Initializable;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.util.*;
 /**
  * FXML Controller class
  *
@@ -54,7 +69,7 @@ public class CalendarViewController implements Initializable {
         drawCalendar();
     }
 
-    private void drawCalendar(){
+    private void drawCalendar() {
         year.setText(String.valueOf(dateFocus.getYear()));
         month.setText(String.valueOf(dateFocus.getMonth()));
 
@@ -64,15 +79,15 @@ public class CalendarViewController implements Initializable {
         double spacingH = calendar.getHgap();
         double spacingV = calendar.getVgap();
 
-        //List of activities for a given month
+        // List of activities for a given month
         Map<Integer, List<CalendarActivity>> calendarActivityMap = getCalendarActivitiesMonth(dateFocus);
 
         int monthMaxDate = dateFocus.getMonth().maxLength();
-        //Check for leap year
-        if(dateFocus.getYear() % 4 != 0 && monthMaxDate == 29){
+        // Check for leap year
+        if (dateFocus.getYear() % 4 != 0 && monthMaxDate == 29) {
             monthMaxDate = 28;
         }
-        int dateOffset = ZonedDateTime.of(dateFocus.getYear(), dateFocus.getMonthValue(), 1,0,0,0,0,dateFocus.getZone()).getDayOfWeek().getValue();
+        int dateOffset = ZonedDateTime.of(dateFocus.getYear(), dateFocus.getMonthValue(), 1, 0, 0, 0, 0, dateFocus.getZone()).getDayOfWeek().getValue();
 
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 7; j++) {
@@ -82,30 +97,32 @@ public class CalendarViewController implements Initializable {
                 rectangle.setFill(Color.TRANSPARENT);
                 rectangle.setStroke(Color.BLACK);
                 rectangle.setStrokeWidth(strokeWidth);
-                double rectangleWidth =(calendarWidth/7) - strokeWidth - spacingH;
+                double rectangleWidth = (calendarWidth / 7) - strokeWidth - spacingH;
                 rectangle.setWidth(rectangleWidth);
-                double rectangleHeight = (calendarHeight/6) - strokeWidth - spacingV;
+                double rectangleHeight = (calendarHeight / 6) - strokeWidth - spacingV;
                 rectangle.setHeight(rectangleHeight);
                 stackPane.getChildren().add(rectangle);
 
-                int calculatedDate = (j+1)+(7*i);
-                if(calculatedDate > dateOffset){
+                int calculatedDate = (j + 1) + (7 * i);
+                if (calculatedDate > dateOffset) {
                     int currentDate = calculatedDate - dateOffset;
-                    if(currentDate <= monthMaxDate){
+                    if (currentDate <= monthMaxDate) {
                         Text date = new Text(String.valueOf(currentDate));
-                        double textTranslationY = - (rectangleHeight / 2) * 0.75;
+                        double textTranslationY = -(rectangleHeight / 2) * 0.75;
                         date.setTranslateY(textTranslationY);
                         stackPane.getChildren().add(date);
 
                         List<CalendarActivity> calendarActivities = calendarActivityMap.get(currentDate);
-                        if(calendarActivities != null){
+                        if (calendarActivities != null) {
                             createCalendarActivity(calendarActivities, rectangleHeight, rectangleWidth, stackPane);
                         }
                     }
-                    if(today.getYear() == dateFocus.getYear() && today.getMonth() == dateFocus.getMonth() && today.getDayOfMonth() == currentDate){
+                    if (today.getYear() == dateFocus.getYear() && today.getMonth() == dateFocus.getMonth() && today.getDayOfMonth() == currentDate) {
                         rectangle.setStroke(Color.BLUE);
                     }
                 }
+                int currentDate = 0;
+                stackPane.setOnMouseClicked(event -> navigateToDashboard(currentDate));
                 calendar.getChildren().add(stackPane);
             }
         }
@@ -114,11 +131,11 @@ public class CalendarViewController implements Initializable {
     private void createCalendarActivity(List<CalendarActivity> calendarActivities, double rectangleHeight, double rectangleWidth, StackPane stackPane) {
         VBox calendarActivityBox = new VBox();
         for (int k = 0; k < calendarActivities.size(); k++) {
-            if(k >= 2) {
+            if (k >= 2) {
                 Text moreActivities = new Text("...");
                 calendarActivityBox.getChildren().add(moreActivities);
                 moreActivities.setOnMouseClicked(mouseEvent -> {
-                    //On ... click print all activities for given date
+                    // On ... click print all activities for given date
                     System.out.println(calendarActivities);
                 });
                 break;
@@ -126,7 +143,7 @@ public class CalendarViewController implements Initializable {
             Text text = new Text(calendarActivities.get(k).getClientName() + ", " + calendarActivities.get(k).getDate().toLocalTime());
             calendarActivityBox.getChildren().add(text);
             text.setOnMouseClicked(mouseEvent -> {
-                //On Text clicked
+                // On Text clicked
                 System.out.println(text.getText());
             });
         }
@@ -167,5 +184,29 @@ public class CalendarViewController implements Initializable {
         }
 
         return createCalendarMap(calendarActivities);
+    }
+
+    private void navigateToDashboard(int selectedDate) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/mycompany/mvvmexample/Dashboard.fxml"));
+            Parent root = loader.load();
+
+            DashboardController controller = loader.getController();
+            controller.setSelectedDate(dateFocus.withDayOfMonth(selectedDate));
+
+            Stage stage = new Stage();
+            stage.setTitle("Dashboard");
+            stage.setScene(new Scene(root, 640, 480));
+            stage.show();
+
+            closeWindow();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void closeWindow() {
+        Stage stage = (Stage) calendar.getScene().getWindow();
+        stage.close();
     }
 }
