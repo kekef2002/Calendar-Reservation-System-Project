@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b096f38-2bfa-464a-b155-ec90e44b319f" name="Changes" comment="This time I was able to connect the firebase, I just need work to connect the Dashboard.fxml with the CalendarView.fxml" />
+    <list default="true" id="7b096f38-2bfa-464a-b155-ec90e44b319f" name="Changes" comment="This is what I am currently working as of right now" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,6 +69,7 @@
       <workItem from="1720410134381" duration="781000" />
       <workItem from="1720487352937" duration="466000" />
       <workItem from="1720500731188" duration="1267000" />
+      <workItem from="1720624227993" duration="351000" />
     </task>
     <task id="LOCAL-00001" summary="Creating WRSPM Project">
       <option name="closed" value="true" />
@@ -118,7 +119,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720501758863</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="This is what I am currently working as of right now">
+      <option name="closed" value="true" />
+      <created>1720624534272</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1720624534272</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -141,6 +150,7 @@
     <MESSAGE value="I created a front and back end of a version, but the firebase would not connect yet." />
     <MESSAGE value="I created a front and back end of a version, but I don't know if the firebase is working yet." />
     <MESSAGE value="This time I was able to connect the firebase, I just need work to connect the Dashboard.fxml with the CalendarView.fxml" />
-    <option name="LAST_COMMIT_MESSAGE" value="This time I was able to connect the firebase, I just need work to connect the Dashboard.fxml with the CalendarView.fxml" />
+    <MESSAGE value="This is what I am currently working as of right now" />
+    <option name="LAST_COMMIT_MESSAGE" value="This is what I am currently working as of right now" />
   </component>
 </project>
