@@ -75,6 +75,7 @@ public class RegisterController {
                 future.get();
                 System.out.println("User registered successfully!");
                 closeWindow();
+                navigateToSignin();
             } catch (InterruptedException | ExecutionException e) {
                 e.printStackTrace();
             }
@@ -82,21 +83,21 @@ public class RegisterController {
             System.out.println("Passwords do not match!");
         }
     }
-    private void navigateTo(String fxml, String title) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource(fxml));
-            Stage stage = new Stage();
-            stage.setTitle(title);
-            stage.setScene(new Scene(root, 640, 480));
-            stage.show();
-            closeWindow();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     private void closeWindow() {
         Stage stage = (Stage) registerButton.getScene().getWindow();
         stage.close();
+    }
+
+    private void navigateToSignin() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/com/mycompany/mvvmexample/Signin.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Sign In");
+            stage.setScene(new Scene(root, 640, 480));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
