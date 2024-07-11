@@ -22,9 +22,9 @@ public class App extends Application {
         FirestoreContext firestoreContext = new FirestoreContext();
         db = firestoreContext.getFirestore();
 
-        Parent root = FXMLLoader.load(getClass().getResource("MainPage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("CalendarView.fxml"));
         primaryStage.setTitle("Main Page");
-        primaryStage.setScene(new Scene(root, 640, 480));
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
 

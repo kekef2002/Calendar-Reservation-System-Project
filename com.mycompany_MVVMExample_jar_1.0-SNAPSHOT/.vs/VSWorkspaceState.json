@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\.idea",
+    "\\src",
+    "\\src\\main",
+    "\\src\\main\\java",
+    "\\src\\main\\java\\com",
+    "\\src\\main\\java\\com\\mycompany",
+    "\\src\\main\\java\\com\\mycompany\\mvvmexample"
+  ],
+  "SelectedNode": "\\src\\main\\java\\com\\mycompany\\mvvmexample\\App.java",
+  "PreviewInSolutionExplorer": false
+}
