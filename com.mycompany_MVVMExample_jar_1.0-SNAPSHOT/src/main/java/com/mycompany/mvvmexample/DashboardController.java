@@ -62,12 +62,17 @@ public class DashboardController {
             Parent root = FXMLLoader.load(getClass().getResource(fxml));
             Stage stage = new Stage();
             stage.setTitle(title);
-            stage.setScene(new Scene(root, 640, 480));
+            stage.setScene(new Scene(root));
             stage.show();
             closeWindow();
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void navigateToCalendarView() {
+        navigateTo("CalendarView.fxml", "Calendar View");
     }
 
     private void closeWindow() {
