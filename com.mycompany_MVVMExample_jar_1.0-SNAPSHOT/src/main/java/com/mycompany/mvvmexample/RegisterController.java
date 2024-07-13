@@ -7,6 +7,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.WriteResult;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.util.HashMap;
@@ -23,6 +25,8 @@ import javafx.scene.Scene;
  */
 
 public class RegisterController {
+    @FXML
+    private ImageView logo;
 
     @FXML
     private TextField firstNameField;
@@ -100,4 +104,5 @@ public class RegisterController {
             e.printStackTrace();
         }
     }
+
 }

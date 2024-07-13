@@ -89,7 +89,7 @@
             <children>
                <ImageView fitHeight="141.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                     <Image url="@../../../../../../../../../Downloads/DALL·E%202024-07-13%2016.39.40%20-%20Create%20a%20simple%20modern%20logo%20for%20'TimeMaster'%20with%20a%20transparent%20background.%20The%20logo%20should%20feature%20a%20minimalistic%20clock%20face%20with%20clear%20hour%20and%20minu%20Background%20Removed.png" />
+                     <Image  fx:id="logo"/>
                   </image>
                </ImageView>
                <Label layoutX="113.0" layoutY="42.0" prefHeight="42.0" prefWidth="211.0" text="Time Master">

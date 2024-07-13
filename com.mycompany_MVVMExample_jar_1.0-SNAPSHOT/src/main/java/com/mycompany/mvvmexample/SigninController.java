@@ -10,6 +10,7 @@ import com.google.cloud.firestore.Firestore;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.util.concurrent.ExecutionException;
@@ -20,6 +21,8 @@ import java.util.concurrent.ExecutionException;
  * @author kekef
  */
 public class SigninController {
+    @FXML
+    private ImageView logo;
 
     @FXML
     private TextField usernameField;
