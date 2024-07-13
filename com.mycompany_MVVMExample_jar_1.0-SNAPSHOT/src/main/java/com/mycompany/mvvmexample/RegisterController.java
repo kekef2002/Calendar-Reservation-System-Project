@@ -26,9 +26,6 @@ import javafx.scene.Scene;
 
 public class RegisterController {
     @FXML
-    private ImageView logo;
-
-    @FXML
     private TextField firstNameField;
 
     @FXML

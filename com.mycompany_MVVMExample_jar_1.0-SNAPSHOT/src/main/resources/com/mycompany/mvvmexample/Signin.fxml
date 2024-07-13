@@ -63,7 +63,7 @@
          <children>
             <ImageView fitHeight="141.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image fx:id = "logo"/>
+                  <Image />
                </image>
             </ImageView>
             <Label layoutX="113.0" layoutY="42.0" prefHeight="42.0" prefWidth="211.0" text="Time Master">

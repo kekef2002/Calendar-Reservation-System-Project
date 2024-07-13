@@ -21,8 +21,7 @@ import java.util.concurrent.ExecutionException;
  * @author kekef
  */
 public class SigninController {
-    @FXML
-    private ImageView logo;
+
 
     @FXML
     private TextField usernameField;
