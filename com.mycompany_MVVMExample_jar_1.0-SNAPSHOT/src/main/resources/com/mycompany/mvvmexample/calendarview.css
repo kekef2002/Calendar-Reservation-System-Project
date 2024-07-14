@@ -1,6 +1,6 @@
 
 * {
-    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-family: "Georgia";
 }
 
 .anchor-pane {
@@ -12,19 +12,20 @@
     -fx-padding: 20;
 }
 
-.text {
-    -fx-fill: #1e88e5;
-    -fx-font-size: 20px;
-    -fx-font-weight: bold;
-}
+/*.text {*/
+/*    -fx-fill: #1e88e5;*/
+/*    -fx-font-size: 20px;*/
+/*    -fx-font-weight: bold;*/
+/*}*/
 
 .button {
     -fx-background-color: #8ecae6;
-    -fx-font-size: 14px;
+    /*-fx-font-style: italic;*/
+    -fx-font-size: 16px;
     -fx-font-weight: bold;
     -fx-padding: 5 10;
     -fx-border-color: #023047;
-    -fx-border-width: 1;
+    -fx-border-width: 0.5;
     -fx-border-radius: 5;
     -fx-background-radius: 5;
 }
@@ -33,14 +34,14 @@
     -fx-background-color: #219ebc;
 }
 
-.flow-pane {
-    -fx-padding: 10;
-    -fx-background-color: rgba(255, 255, 255, 0.7);
-    -fx-border-color: #90caf9;
-    -fx-border-width: 1;
-    -fx-border-radius: 10;
-    -fx-background-radius: 10;
-}
+/*.flow-pane {*/
+/*    -fx-padding: 10;*/
+/*    -fx-background-color: rgba(255, 255, 255, 0.7);*/
+/*    -fx-border-color: #90caf9;*/
+/*    -fx-border-width: 1;*/
+/*    -fx-border-radius: 10;*/
+/*    -fx-background-radius: 10;*/
+/*}*/
 
 .hbox {
     -fx-background-color: rgba(255, 255, 255, 0.7);

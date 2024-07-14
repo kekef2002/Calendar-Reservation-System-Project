@@ -21,77 +21,28 @@
       <children>
          <Rectangle arcHeight="5.0" arcWidth="5.0" height="484.0" stroke="BLACK" strokeType="INSIDE" width="645.0">
             <fill>
-               <LinearGradient endX="1.0" endY="1.0">
+               <LinearGradient endX="0.5676959619952494" endY="0.7814726840855106" startX="1.0" startY="0.2755344418052256">
                   <stops>
                      <Stop>
                         <color>
-                           <Color red="0.26681286096572876" green="0.5368542671203613" blue="0.7894737124443054" />
+                           <Color red="0.9078947305679321" green="0.9078947305679321" blue="0.9078947305679321" />
                         </color>
                      </Stop>
                      <Stop offset="1.0">
                         <color>
-                           <Color red="1.0" green="1.0" blue="1.0" />
+                           <Color red="0.7058823704719543" green="0.886274516582489" blue="0.929411768913269" />
                         </color>
                      </Stop>
                   </stops>
                </LinearGradient>
             </fill>
          </Rectangle>
-         <Group layoutX="43.0" layoutY="141.0">
-            <children>
-                 <PasswordField fx:id="confirmPasswordField" layoutX="147.0" layoutY="162.0" prefHeight="25.0" prefWidth="406.0" />
-                 <TextField fx:id="usernameField" layoutX="145.0" prefHeight="25.0" prefWidth="412.0" />
-                 <TextField fx:id="lastNameField" layoutX="96.0" layoutY="77.0" prefHeight="25.0" prefWidth="460.0" />
-                 <Label layoutY="41.0" prefHeight="25.0" prefWidth="85.0" text="First Name:">
-                  <font>
-                     <Font name="Georgia" size="16.0" />
-                  </font>
-               </Label>
-                 <TextField fx:id="firstNameField" layoutX="99.0" layoutY="38.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="460.0" />
-                 
-                    <Label layoutX="2.0" layoutY="80.0" prefHeight="25.0" prefWidth="82.0" text="Last Name:">
-                  <font>
-                     <Font name="Georgia" size="16.0" />
-                  </font>
-               </Label>
-                 
-                    <Label layoutY="3.0" prefHeight="25.0" prefWidth="128.0" text="Create Username:">
-                  <font>
-                     <Font name="Georgia" size="16.0" />
-                  </font>
-               </Label>
-                 
-                    <Label layoutX="2.0" layoutY="205.0" text="Email:">
-                  <font>
-                     <Font name="Georgia" size="16.0" />
-                  </font>
-               </Label>
-                 <TextField fx:id="emailField" layoutX="68.0" layoutY="202.0" prefHeight="25.0" prefWidth="487.0" />
-                 <PasswordField fx:id="passwordField" layoutX="96.0" layoutY="118.0" prefHeight="25.0" prefWidth="460.0">
-                  <font>
-                     <Font name="Georgia" size="16.0" />
-                  </font>
-               </PasswordField>
-                 
-                    <Label layoutY="165.0" text="Confirm Password:">
-                  <font>
-                     <Font name="Georgia" size="16.0" />
-                  </font>
-               </Label>
-               <Label layoutY="120.0" prefHeight="25.0" prefWidth="85.0" text=" Password:">
-                  <font>
-                     <Font name="Georgia" size="16.0" />
-                  </font>
-               </Label>
-            </children>
-         </Group>
          <Group layoutX="146.0" layoutY="-21.0">
             <children>
                <ImageView fitHeight="141.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                     <Image  />
-                  </image>
-               </ImageView>
+                     <Image url="@DALL·E%202024-07-13%2016.39.40%20-%20Create%20a%20simple%20modern%20logo%20for%20'TimeMaster'%20with%20a%20transparent%20background.%20The%20logo%20should%20feature%20a%20minimalistic%20clock%20face%20with%20clear%20hour%20and%20minu%20Background%20Removed.png" />
+                  </image></ImageView>
                <Label layoutX="113.0" layoutY="42.0" prefHeight="42.0" prefWidth="211.0" text="Time Master">
                   <font>
                      <Font name="Georgia" size="37.0" />
@@ -106,11 +57,45 @@
             </children>
          </Group>
            
-              <Button fx:id="registerButton" layoutX="43.0" layoutY="412.0" prefHeight="29.0" prefWidth="559.0" style="-fx-background-color: black; -fx-text-fill: white; -fx-background-radius: 8;" text="Register" textFill="WHITE">
+              <Button fx:id="registerButton" layoutX="43.0" layoutY="431.0" prefHeight="29.0" prefWidth="559.0" style="-fx-background-color: black; -fx-text-fill: white; -fx-background-radius: 8;" text="Register" textFill="WHITE">
             <font>
                <Font name="Georgia" size="16.0" />
             </font>
          </Button>
+         <Group layoutX="79.0" layoutY="145.0">
+            <children>
+                 <TextField fx:id="emailField" layoutY="229.0" prefHeight="29.0" prefWidth="487.0" promptText="Email">
+                  <font>
+                     <Font name="Georgia" size="16.0" />
+                  </font>
+               </TextField>
+                 <TextField fx:id="usernameField" layoutX="1.0" prefHeight="29.0" prefWidth="485.0" promptText="UserName">
+                  <font>
+                     <Font name="Georgia" size="16.0" />
+                  </font>
+               </TextField>
+                 <TextField fx:id="firstNameField" layoutX="1.0" layoutY="49.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="485.0" promptText="First Name">
+                  <font>
+                     <Font name="Georgia" size="16.0" />
+                  </font>
+               </TextField>
+                 <PasswordField fx:id="passwordField" layoutX="1.0" layoutY="140.0" prefHeight="29.0" prefWidth="485.0" promptText="Password">
+                  <font>
+                     <Font name="Georgia" size="16.0" />
+                  </font>
+               </PasswordField>
+                 <PasswordField fx:id="confirmPasswordField" layoutY="176.0" prefHeight="29.0" prefWidth="487.0" promptText="Confirm Password">
+                  <font>
+                     <Font name="Georgia" size="16.0" />
+                  </font>
+               </PasswordField>
+                 <TextField fx:id="lastNameField" layoutX="1.0" layoutY="82.0" prefHeight="29.0" prefWidth="485.0" promptText="Last Name">
+                  <font>
+                     <Font name="Georgia" size="16.0" />
+                  </font>
+               </TextField>
+            </children>
+         </Group>
       </children>
    </AnchorPane>
 </VBox>

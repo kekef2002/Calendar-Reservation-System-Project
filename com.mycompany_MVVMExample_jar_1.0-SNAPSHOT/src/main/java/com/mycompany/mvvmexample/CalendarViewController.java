@@ -2,9 +2,7 @@ package com.mycompany.mvvmexample;
 
 import java.net.URL;
 import java.time.ZonedDateTime;
-import java.time.format.TextStyle;
 import java.util.*;
-import java.util.Locale;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +10,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -20,14 +20,20 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- */
 public class CalendarViewController implements Initializable {
+
 
     ZonedDateTime dateFocus;
     ZonedDateTime today;
+
+    @FXML
+    private TabPane createEventTab;
+
+    @FXML
+    private Tab tab2;
+
+    @FXML
+    private Button createEventButton;
 
     @FXML
     private Text year;
@@ -72,7 +78,6 @@ public class CalendarViewController implements Initializable {
         double spacingH = calendar.getHgap();
         double spacingV = calendar.getVgap();
 
-
         Map<Integer, List<CalendarActivity>> calendarActivityMap = getCalendarActivitiesMonth(dateFocus);
 
         int monthMaxDate = dateFocus.getMonth().maxLength();
@@ -113,7 +118,6 @@ public class CalendarViewController implements Initializable {
                         rectangle.setStroke(Color.BLUE);
                     }
                 }
-                int currentDate = 0;
                 stackPane.setOnMouseClicked(event -> navigateToDashboard());
                 calendar.getChildren().add(stackPane);
             }
@@ -199,4 +203,5 @@ public class CalendarViewController implements Initializable {
         Stage stage = (Stage) dashboardButton.getScene().getWindow();
         stage.close();
     }
+
 }

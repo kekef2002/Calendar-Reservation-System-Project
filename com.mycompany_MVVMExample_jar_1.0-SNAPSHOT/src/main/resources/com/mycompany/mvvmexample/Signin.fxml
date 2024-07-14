@@ -16,7 +16,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="489.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.mvvmexample.SigninController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="489.0" stroke="BLACK" strokeType="INSIDE" width="657.0">
@@ -63,16 +62,15 @@
          <children>
             <ImageView fitHeight="141.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image />
-               </image>
-            </ImageView>
+                  <Image url="@DALL·E%202024-07-13%2016.39.40%20-%20Create%20a%20simple%20modern%20logo%20for%20'TimeMaster'%20with%20a%20transparent%20background.%20The%20logo%20should%20feature%20a%20minimalistic%20clock%20face%20with%20clear%20hour%20and%20minu%20Background%20Removed.png" />
+               </image></ImageView>
             <Label layoutX="113.0" layoutY="42.0" prefHeight="42.0" prefWidth="211.0" text="Time Master">
                <font>
                   <Font name="Georgia" size="37.0" />
                </font>
             </Label>
             <Line endX="617.5" layoutX="-119.0" layoutY="100.0" startX="-27.0" />
-                  <Label layoutX="133.0" layoutY="105.0" text="Sign in" textFill="BLACK">
+                  <Label layoutX="128.0" layoutY="114.0" text="Sign in" textFill="BLACK">
                <font>
                   <Font name="Georgia Italic" size="23.0" />
                </font>
