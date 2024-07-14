@@ -127,7 +127,7 @@
                </Tab>
             </tabs>
          </TabPane>
-         <Button layoutX="579.0" layoutY="591.0" mnemonicParsing="false" onAction="#addeventTab" prefHeight="31.0" prefWidth="146.0" text="Add Event  " />
+         <Button layoutX="579.0" layoutY="591.0" mnemonicParsing="false"  prefHeight="31.0" prefWidth="146.0" text="Add Event  " />
          <Line endX="894.0" layoutX="101.0" layoutY="568.0" startX="-100.0" />
          <Button fx:id="dashboardButton" layoutX="14.0" layoutY="591.0" mnemonicParsing="false" onAction="#navigateToDashboard" prefHeight="31.0" prefWidth="146.0" text="Dashboard  " />
          <ImageView accessibleRole="BUTTON" fitHeight="31.0" fitWidth="34.0" layoutX="850.0" layoutY="592.0" pickOnBounds="true" preserveRatio="true">
