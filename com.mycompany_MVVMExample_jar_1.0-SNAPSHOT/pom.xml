@@ -20,41 +20,22 @@
             <artifactId>javafx-fxml</artifactId>
             <version>13</version>
         </dependency>
-                <dependency>
+        <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-web</artifactId>
             <version>13</version>
         </dependency>
-<!--     <dependency>
-    <groupId>com.google.firebase</groupId>
-    <artifactId>firebase-auth</artifactId>
-    <version>21.0.1</version>
-</dependency>-->
-
         <dependency>
             <groupId>com.google.firebase</groupId>
             <artifactId>firebase-admin</artifactId>
             <version>9.1.0</version>
             <type>jar</type>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.google.firebase/firebase-config -->
-<!--        <dependency>
-            <groupId>com.google.firebase</groupId>
-            <artifactId>firebase-config</artifactId>
-            <version>21.0.0</version>
-        </dependency>-->
-
-
         <dependency>
             <groupId>org.rationalityfrontline.workaround</groupId>
             <artifactId>jfoenix</artifactId>
             <version>17.0.5</version>
         </dependency>
-        <!--<dependency>
-            <groupId>com.jfoenix</groupId>
-            <artifactId>jfoenix</artifactId>
-            <version>9.0.10</version>
-        </dependency>-->
         <dependency>
             <groupId>com.google.cloud</groupId>
             <artifactId>google-cloud-firestore</artifactId>
@@ -67,36 +48,61 @@
             <version>1.11.0</version>
             <type>jar</type>
         </dependency>
-      
     </dependencies>
     <build>
         <plugins>
-           
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.10.1</version>
                 <configuration>
-                    <release>11</release>
+                    <fork>true</fork>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <configuration>
+                    <mainClass>com.mycompany.mvvmexample.App</mainClass>
+                    <arguments>
+                        <argument>--add-opens</argument>
+                        <argument>java.base/java.time=ALL-UNNAMED</argument>
+                        <argument>--add-opens</argument>
+                        <argument>java.base/java.time.chrono=ALL-UNNAMED</argument>
+                    </arguments>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
-                <version>0.0.4</version>
+                <version>0.0.5</version>
                 <configuration>
                     <mainClass>com.mycompany.mvvmexample.App</mainClass>
+                    <options>
+                        <option>--add-opens=java.base/java.time=ALL-UNNAMED</option>
+                        <option>--add-opens=java.base/java.time.chrono=ALL-UNNAMED</option>
+                    </options>
                 </configuration>
                 <executions>
                     <execution>
-                        <!-- Default configuration for running -->
-                        <!-- Usage: mvn clean javafx:run -->
                         <id>default-cli</id>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
                     </execution>
                     <execution>
-                        <!-- Configuration for manual attach debugging -->
-                        <!-- Usage: mvn clean javafx:run@debug -->
                         <id>debug</id>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
                         <configuration>
                             <options>
                                 <option>-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=localhost:8000</option>
@@ -104,8 +110,10 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <!-- Configuration for automatic IDE debugging -->
                         <id>ide-debug</id>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
                         <configuration>
                             <options>
                                 <option>-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</option>
@@ -113,8 +121,10 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <!-- Configuration for automatic IDE profiling -->
                         <id>ide-profile</id>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
                         <configuration>
                             <options>
                                 <option>${profiler.jvmargs.arg1}</option>

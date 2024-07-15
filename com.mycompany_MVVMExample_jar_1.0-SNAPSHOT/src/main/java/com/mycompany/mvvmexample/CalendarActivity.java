@@ -5,28 +5,34 @@
 package com.mycompany.mvvmexample;
 
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
  * @author kekef
  */
+
 public class CalendarActivity {
-    private ZonedDateTime date;
+//    private ZonedDateTime date;
     private String clientName;
     private Integer serviceNo;
-
+    private String date; // Store date as string in ISO-8601 format
+    
+    public CalendarActivity() {
+    }
+    
     public CalendarActivity(ZonedDateTime date, String clientName, Integer serviceNo) {
-        this.date = date;
+        this.date = date != null ? date.format(DateTimeFormatter.ISO_ZONED_DATE_TIME) : null;
         this.clientName = clientName;
         this.serviceNo = serviceNo;
     }
 
-    public ZonedDateTime getDate() {
+    public String getDate() {
         return date;
     }
 
     public void setDate(ZonedDateTime date) {
-        this.date = date;
+        this.date = date != null ? date.format(DateTimeFormatter.ISO_ZONED_DATE_TIME) : null;
     }
 
     public String getClientName() {
@@ -43,6 +49,10 @@ public class CalendarActivity {
 
     public void setServiceNo(Integer serviceNo) {
         this.serviceNo = serviceNo;
+    }
+    
+    public ZonedDateTime getZonedDateTime() {
+        return date != null ? ZonedDateTime.parse(this.date, DateTimeFormatter.ISO_ZONED_DATE_TIME) : null;
     }
 
     @Override

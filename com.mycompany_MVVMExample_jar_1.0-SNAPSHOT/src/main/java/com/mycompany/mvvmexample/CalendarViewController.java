@@ -1,10 +1,20 @@
 package com.mycompany.mvvmexample;
 
+import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.DocumentReference;
 import java.net.URL;
 import java.time.ZonedDateTime;
 import java.util.*;
 
 import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.WriteResult;
+import com.google.cloud.firestore.QueryDocumentSnapshot;
+import com.google.cloud.firestore.QuerySnapshot;
+import java.time.ZoneId;
+import java.util.concurrent.ExecutionException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -56,25 +66,29 @@ public class CalendarViewController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         dateFocus = ZonedDateTime.now();
         today = ZonedDateTime.now();
-        drawCalendar();
+        try {
+            drawCalendar();
+        } catch (ExecutionException ex) {
+            Logger.getLogger(CalendarViewController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         confirmAppointmentButton.setOnAction(event -> confirmAppointment());
     }
 
     @FXML
-    void backOneMonth(ActionEvent event) {
+    void backOneMonth(ActionEvent event) throws ExecutionException {
         dateFocus = dateFocus.minusMonths(1);
         calendar.getChildren().clear();
         drawCalendar();
     }
 
     @FXML
-    void forwardOneMonth(ActionEvent event) {
+    void forwardOneMonth(ActionEvent event) throws ExecutionException {
         dateFocus = dateFocus.plusMonths(1);
         calendar.getChildren().clear();
         drawCalendar();
     }
 
-    private void drawCalendar() {
+    private void drawCalendar() throws ExecutionException {
         year.setText(String.valueOf(dateFocus.getYear()));
         month.setText(String.valueOf(dateFocus.getMonth()));
 
@@ -142,7 +156,8 @@ public class CalendarViewController implements Initializable {
                 });
                 break;
             }
-            Text text = new Text(calendarActivities.get(k).getClientName() + ", " + calendarActivities.get(k).getDate().toLocalTime());
+            CalendarActivity activity = calendarActivities.get(k);
+            Text text = new Text(activity.getClientName() + ", " + activity.getZonedDateTime().toLocalTime());
             text.getStyleClass().add("text");
             calendarActivityBox.getChildren().add(text);
             text.setOnMouseClicked(mouseEvent -> {
@@ -159,29 +174,44 @@ public class CalendarViewController implements Initializable {
         Map<Integer, List<CalendarActivity>> calendarActivityMap = new HashMap<>();
 
         for (CalendarActivity activity : calendarActivities) {
-            int activityDate = activity.getDate().getDayOfMonth();
-            if (!calendarActivityMap.containsKey(activityDate)) {
-                calendarActivityMap.put(activityDate, List.of(activity));
-            } else {
-                List<CalendarActivity> oldListByDate = calendarActivityMap.get(activityDate);
+            ZonedDateTime zonedDateTime = activity.getZonedDateTime();
+            if (zonedDateTime != null) {
+                int activityDate = zonedDateTime.getDayOfMonth();
+                if (!calendarActivityMap.containsKey(activityDate)) {
+                    calendarActivityMap.put(activityDate, List.of(activity));
+                } else {
+                    List<CalendarActivity> oldListByDate = calendarActivityMap.get(activityDate);
 
-                List<CalendarActivity> newList = new ArrayList<>(oldListByDate);
-                newList.add(activity);
-                calendarActivityMap.put(activityDate, newList);
+                    List<CalendarActivity> newList = new ArrayList<>(oldListByDate);
+                    newList.add(activity);
+                    calendarActivityMap.put(activityDate, newList);
+                }
+            } else {
+                System.err.println("CalendarActivity has null date: " + activity);
             }
         }
         return calendarActivityMap;
     }
 
-    private Map<Integer, List<CalendarActivity>> getCalendarActivitiesMonth(ZonedDateTime dateFocus) {
+    private Map<Integer, List<CalendarActivity>> getCalendarActivitiesMonth(ZonedDateTime dateFocus) throws ExecutionException {
         List<CalendarActivity> calendarActivities = new ArrayList<>();
-        int year = dateFocus.getYear();
-        int month = dateFocus.getMonth().getValue();
+        FirestoreContext firestoreContext = new FirestoreContext();
+        Firestore db = firestoreContext.getFirestore();
 
-        Random random = new Random();
-        for (int i = 0; i < 50; i++) {
-            ZonedDateTime time = ZonedDateTime.of(year, month, random.nextInt(27) + 1, 16, 0, 0, 0, dateFocus.getZone());
-            calendarActivities.add(new CalendarActivity(time, "Hans", 111111));
+        try {
+            ApiFuture<QuerySnapshot> future = db.collection("appointments").get();
+            List<QueryDocumentSnapshot> documents = future.get().getDocuments();
+
+            for (QueryDocumentSnapshot document : documents) {
+                CalendarActivity activity = document.toObject(CalendarActivity.class);
+                if (activity.getDate() != null) {
+                    calendarActivities.add(activity);
+                } else {
+                    System.err.println("Document with ID " + document.getId() + " has null date field.");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         return createCalendarMap(calendarActivities);
@@ -237,28 +267,40 @@ public class CalendarViewController implements Initializable {
 
     }
 
-    private void confirmAppointment() {
+        private void confirmAppointment() {
         String name = nameField.getText();
         String email = emailField.getText();
         String phone = phoneField.getText();
+        selectedDate = ZonedDateTime.now();
 
         CalendarActivity appointment = new CalendarActivity(selectedDate, name, 0);
 
         FirestoreContext firestoreContext = new FirestoreContext();
         Firestore db = firestoreContext.getFirestore();
 
-        db.collection("appointments").add(appointment).addListener(() -> {
+        ApiFuture<DocumentReference> future = db.collection("appointments").add(appointment);
+        try {
+            future.get();
             System.out.println("Appointment saved successfully!");
-            navigateTo("CalendarView.fxml", "Calendar View");
-        }, Runnable::run);
+            Platform.runLater(() -> navigateTo("CalendarView.fxml", "Calendar View"));
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 
 
 
     @FXML
     private void navigateToCalendarView() {
-        mainTabPane.getSelectionModel().select(calenderView);
-
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("CalendarView.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Calendar View");
+            stage.setScene(new Scene(root, 1000, 650)); // Set size here
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
