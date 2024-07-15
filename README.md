@@ -93,8 +93,8 @@ Calendar-Reservation-System/
 
 ## Authors
 
-- [kekef2002](https://github.com/kekef2002)
+- [Afaq136](https://github.com/Afaq136)
 - [itsharryb13](https://github.com/itsharryb13)
 - [Jkollar116](https://github.com/Jkollar116)
-- [Afaq136](https://github.com/Afaq136)
+- [kekef2002](https://github.com/kekef2002)
 - [nav7FSC](https://github.com/nav7FSC)
