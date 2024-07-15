@@ -3,6 +3,8 @@ package com.mycompany.mvvmexample;
 import java.net.URL;
 import java.time.ZonedDateTime;
 import java.util.*;
+
+import com.google.cloud.firestore.Firestore;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -27,13 +30,15 @@ public class CalendarViewController implements Initializable {
     ZonedDateTime today;
 
     @FXML
-    private TabPane createEventTab;
+    private TabPane mainTabPane, sideTabPane;
+
+    // tab fx id for main tab pane
+    @FXML
+    private Tab calenderView,dashboard ;
 
     @FXML
-    private Tab tab2;
+    private Tab todayTab,menu,contactInfo, privacyPolicy;
 
-    @FXML
-    private Button createEventButton;
 
     @FXML
     private Text year;
@@ -52,6 +57,7 @@ public class CalendarViewController implements Initializable {
         dateFocus = ZonedDateTime.now();
         today = ZonedDateTime.now();
         drawCalendar();
+        confirmAppointmentButton.setOnAction(event -> confirmAppointment());
     }
 
     @FXML
@@ -196,7 +202,7 @@ public class CalendarViewController implements Initializable {
 
     @FXML
     private void navigateToDashboard() {
-        navigateTo("Dashboard.fxml", "Calendar View");
+        mainTabPane.getSelectionModel().select(dashboard);
     }
 
     private void closeWindow() {
@@ -204,4 +210,75 @@ public class CalendarViewController implements Initializable {
         stage.close();
     }
 
+    /**
+     * Dashboard page methods and Initialized fields
+     */
+
+    @FXML
+    private TextField nameField;
+
+    @FXML
+    private TextField emailField;
+
+    @FXML
+    private TextField phoneField;
+
+    @FXML
+    private Button confirmAppointmentButton;
+
+    private ZonedDateTime selectedDate;
+
+//    public void setSelectedDate(ZonedDateTime selectedDate) {
+//        this.selectedDate = selectedDate;
+//    }
+
+    @FXML
+    private void initialize() {
+
+    }
+
+    private void confirmAppointment() {
+        String name = nameField.getText();
+        String email = emailField.getText();
+        String phone = phoneField.getText();
+
+        CalendarActivity appointment = new CalendarActivity(selectedDate, name, 0);
+
+        FirestoreContext firestoreContext = new FirestoreContext();
+        Firestore db = firestoreContext.getFirestore();
+
+        db.collection("appointments").add(appointment).addListener(() -> {
+            System.out.println("Appointment saved successfully!");
+            navigateTo("CalendarView.fxml", "Calendar View");
+        }, Runnable::run);
+    }
+
+
+
+    @FXML
+    private void navigateToCalendarView() {
+        mainTabPane.getSelectionModel().select(calenderView);
+
+    }
+
+
+    public void menuButton(ActionEvent actionEvent) {
+        sideTabPane.getSelectionModel().select(menu);
+    }
+
+    public void contactInfoButton(ActionEvent actionEvent) {
+        sideTabPane.getSelectionModel().select(contactInfo);
+    }
+
+    public void privacyPolicyButton(ActionEvent actionEvent) {
+        sideTabPane.getSelectionModel().select(privacyPolicy);
+    }
+
+    public void signoutButton(ActionEvent actionEvent) {
+
+    }
+
+    public void todaytabbutton(ActionEvent actionEvent) {
+        sideTabPane.getSelectionModel().select(todayTab);
+    }
 }
