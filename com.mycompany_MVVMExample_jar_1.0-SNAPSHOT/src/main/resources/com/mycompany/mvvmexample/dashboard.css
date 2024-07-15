@@ -1,0 +1,109 @@
+/* General styling */
+* {
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+.anchor-pane, .mainFxmlClass {
+    -fx-background-color: #90caf9;
+    -fx-border-color: #90caf9;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 20;
+}
+
+.text {
+    -fx-fill: #1e88e5;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.button {
+    -fx-background-color: #8ecae6;
+    -fx-font-size: 14px;
+    -fx-border-color: #023047;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+.button:hover {
+    -fx-background-color: #219ebc;
+}
+
+.flow-pane {
+    -fx-padding: 10;
+    -fx-background-color: #90caf;
+    -fx-border-color: #90caf9;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+.hbox, .vbox {
+    -fx-background-color: #FFFFFFB2;
+    -fx-border-color: #90caf9;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 10;
+}
+
+.hbox .text {
+    -fx-font-size: 18px;
+}
+
+.stack-pane {
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #90caf9;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+.stack-pane:hover {
+    -fx-background-color: #f0f0f0;
+}
+
+.rectangle {
+    -fx-stroke: #90caf9;
+    -fx-stroke-width: 1;
+    -fx-fill: #f0f0f0;
+}
+
+.date-text {
+    -fx-fill: #1e88e5;
+    -fx-font-size: 14px;
+}
+
+.calendar-activity-box {
+    -fx-background-color: #f0f0f0;
+    -fx-padding: 5;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+.calendar-activity-box .text {
+    -fx-fill: #01579b;
+    -fx-font-size: 12px;
+}
+
+.label {
+    -fx-text-fill: #1e88e5;
+    -fx-font-size: 14px;
+}
+
+.text-field {
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #90caf9;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 5;
+}
+
+.list-view {
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #90caf9;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
