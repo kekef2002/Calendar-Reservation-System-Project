@@ -1,13 +1,96 @@
-# Calendar Reservation System Project
-This project provides a robust calendar system designed for users to make and manage reservations seamlessly. 
+# Calendar Reservation System
 
-## Key features include:
-- **User-Friendly Interface:** Intuitive design allowing for easy navigation and reservation management.
-- **Flexible Scheduling:** Supports various types of reservations with customizable time slots.
-- **Notification System:** Sends reminders and updates to ensure users never miss reservations.
-- **Access Control:** User authentication and permission settings to secure and personalize the reservation experience.
-- **Integration Capabilities:** Compatible with external calendars and third-party services for enhanced functionality.
+This project is a JavaFX application for managing calendar reservations. It allows users to sign in, create accounts, and manage appointments. The application uses Firestore as the backend database.
 
-It is ideal for businesses, community groups, and individuals looking to streamline their scheduling processes.
+## Table of Contents
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Authors](#authors)
 
-**Calendar Prototype link from Figma:** https://www.figma.com/design/fSXXEiFmx5MXc47KjSvaD0/Calendar-Reservation-System-Project_LoFi-design?node-id=0-1&t=Cc5Yyyq0QMPcuaJ8-1
+## Prerequisites
+
+To run this project, you need the following software installed:
+
+- JDK 21
+- SceneBuilder
+- NetBeans 20 or IntelliJ IDEA
+- Maven
+
+## Installation
+
+### Step 1: Clone the repository
+
+```sh
+git clone https://github.com/yourusername/Calendar-Reservation-System.git
+cd Calendar-Reservation-System
+```
+
+### Step 2: Set up Firestore
+
+Ensure you have a Firestore project set up and download the service account key file. Place the `key.json` file in the `resources/com/mycompany/mvvmexample` directory.
+
+### Step 3: Build the project
+
+Navigate to the project directory and run the following Maven command to build the project:
+
+```sh
+mvn clean install
+```
+
+### Step 4: Run the application
+
+Use the following Maven command to run the application:
+
+```sh
+mvn javafx:run
+```
+
+## Usage
+
+### Sign In
+
+1. Enter your username and password.
+2. Click on the "Sign up with username" button to sign in.
+
+### Create Account
+
+1. Click on the "Create Your Account" button on the Sign In page.
+2. Fill out the registration form and click on the "Register" button.
+
+### Managing Appointments
+
+1. Once signed in, navigate to the Calendar View to manage your appointments.
+2. Use the navigation buttons to move between months.
+3. Click on a date to view or add appointments.
+
+## Project Structure
+
+```plaintext
+Calendar-Reservation-System/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/mycompany/mvvmexample/
+│   │   │       ├── App.java
+│   │   │       ├── SigninController.java
+│   │   │       ├── CalendarActivity.java
+│   │   │       ├── CalendarViewController.java
+│   │   │       ├── FirestoreContext.java
+│   │   │       └── RegisterController.java
+│   │   ├── resources/
+│   │   │   └── com/mycompany/mvvmexample/
+│   │   │       ├── Signin.fxml
+│   │   │       ├── CalendarView.fxml
+│   │   │       ├── Register.fxml
+│   │   │       └── key.json
+│   └── test/
+│       └── java/
+├── pom.xml
+└── README.md
+```
+
+## Authors
+
+- [kekef](https://github.com/kekef)
