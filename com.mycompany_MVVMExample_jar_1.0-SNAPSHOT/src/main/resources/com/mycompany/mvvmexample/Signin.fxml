@@ -42,7 +42,7 @@
                   <PasswordField fx:id="passwordField" layoutX="102.0" layoutY="265.0" prefHeight="36.0" prefWidth="472.0" promptText="Password" style="-fx-background-color: white; -fx-text-fill: #828282;" />
          </children>
       </Group>
-          <Button fx:id="loginButton" layoutX="47.0" layoutY="355.0" prefHeight="29.0" prefWidth="559.0" style="-fx-background-color: black; -fx-background-radius: 8; -fx-text-fill: white;" text="Sign up with username">
+          <Button fx:id="loginButton" layoutX="47.0" layoutY="355.0" prefHeight="29.0" prefWidth="559.0" style="-fx-background-color: black; -fx-background-radius: 8; -fx-text-fill: white;" text="Sign in with username">
               <padding>
                   <Insets left="16.0" right="16.0" />
               </padding>
