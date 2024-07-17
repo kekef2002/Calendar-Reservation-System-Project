@@ -16,23 +16,27 @@ public class CalendarActivity {
 //    private ZonedDateTime date;
     private String clientName;
     private Integer serviceNo;
-    private String date; // Store date as string in ISO-8601 format
-    
+    private String email;
+    private String phoneNumber;
+    private ZonedDateTime date; // Store date as string in ISO-8601 format
+
     public CalendarActivity() {
     }
-    
-    public CalendarActivity(ZonedDateTime date, String clientName, Integer serviceNo) {
-        this.date = date != null ? date.format(DateTimeFormatter.ISO_ZONED_DATE_TIME) : null;
+
+    public CalendarActivity(ZonedDateTime date, String clientName, Integer serviceNo , String email, String phoneNumber) {
+        this.date = date ;
         this.clientName = clientName;
         this.serviceNo = serviceNo;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
     }
 
-    public String getDate() {
+    public ZonedDateTime getDate() {
         return date;
     }
 
     public void setDate(ZonedDateTime date) {
-        this.date = date != null ? date.format(DateTimeFormatter.ISO_ZONED_DATE_TIME) : null;
+        this.date = date;
     }
 
     public String getClientName() {
@@ -50,9 +54,25 @@ public class CalendarActivity {
     public void setServiceNo(Integer serviceNo) {
         this.serviceNo = serviceNo;
     }
-    
+
     public ZonedDateTime getZonedDateTime() {
-        return date != null ? ZonedDateTime.parse(this.date, DateTimeFormatter.ISO_ZONED_DATE_TIME) : null;
+        return date;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     @Override
@@ -60,7 +80,7 @@ public class CalendarActivity {
         return "CalenderActivity{" +
                 "date=" + date +
                 ", clientName='" + clientName + '\'' +
-                ", serviceNo=" + serviceNo +
+                ", serviceNo=" + serviceNo + ", email='" + email + '\'' + ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }    
 }

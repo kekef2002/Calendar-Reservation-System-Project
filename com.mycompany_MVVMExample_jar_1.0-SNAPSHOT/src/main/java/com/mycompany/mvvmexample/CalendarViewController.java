@@ -3,6 +3,8 @@ package com.mycompany.mvvmexample;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.DocumentReference;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.ZonedDateTime;
 import java.util.*;
 
@@ -14,6 +16,8 @@ import java.time.ZoneId;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import com.google.gson.Gson;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,10 +25,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -44,7 +45,7 @@ public class CalendarViewController implements Initializable {
 
     // tab fx id for main tab pane
     @FXML
-    private Tab calenderView,dashboard ;
+    private Tab dashboard ;
 
     @FXML
     private Tab todayTab,menu,contactInfo, privacyPolicy;
@@ -72,6 +73,7 @@ public class CalendarViewController implements Initializable {
             Logger.getLogger(CalendarViewController.class.getName()).log(Level.SEVERE, null, ex);
         }
         confirmAppointmentButton.setOnAction(event -> confirmAppointment());
+
     }
 
     @FXML
@@ -254,37 +256,45 @@ public class CalendarViewController implements Initializable {
     private TextField phoneField;
 
     @FXML
-    private Date dateFeild; // Date selection
+    private DatePicker datePicker;
 
+    @FXML
+    private ComboBox<String> timePicker;
 
     @FXML
     private Button confirmAppointmentButton;
 
-    private ZonedDateTime selectedDate;
+    public ZonedDateTime selectedDate;
 
 //    public void setSelectedDate(ZonedDateTime selectedDate) {
 //        this.selectedDate = selectedDate;
 //    }
 
-    @FXML
-    private void initialize() {
 
-    }
 
-        private void confirmAppointment() {
+    private void confirmAppointment() {
         String name = nameField.getText();
         String email = emailField.getText();
         String phone = phoneField.getText();
-        Date selectedDate1 = dateFeild;
+        LocalDate selectedDate = datePicker.getValue();
+        String selectedTime = timePicker.getValue();
+        LocalTime time = LocalTime.parse(selectedTime);
+        ZoneId zoneId = ZoneId.systemDefault();
+        ZonedDateTime dateTime = ZonedDateTime.of(selectedDate, time, zoneId);
 
-        //selectedDate = ZonedDateTime.now();
-
-        CalendarActivity appointment = new CalendarActivity(selectedDate, name, 0);
+        CalendarActivity appointment = new CalendarActivity(dateTime, name, 0,email,phone);
 
         FirestoreContext firestoreContext = new FirestoreContext();
         Firestore db = firestoreContext.getFirestore();
+        Gson gson = FirestoreContext.getGson();
 
-        ApiFuture<DocumentReference> future = db.collection("appointments").add(appointment);
+        Map<String, Object> data = new HashMap<>();
+        data.put("clientName", name);
+        data.put("zonedDateTime", gson.toJson(dateTime));
+        data.put("Email", email);
+        data.put("Phone", phone);
+
+        ApiFuture<DocumentReference> future = db.collection("appointments").add(data);
         try {
             future.get();
             System.out.println("Appointment saved successfully!");
