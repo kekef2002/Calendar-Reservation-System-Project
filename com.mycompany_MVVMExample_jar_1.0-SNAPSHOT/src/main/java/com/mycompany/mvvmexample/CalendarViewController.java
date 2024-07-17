@@ -254,6 +254,10 @@ public class CalendarViewController implements Initializable {
     private TextField phoneField;
 
     @FXML
+    private Date dateFeild; // Date selection
+
+
+    @FXML
     private Button confirmAppointmentButton;
 
     private ZonedDateTime selectedDate;
@@ -271,7 +275,9 @@ public class CalendarViewController implements Initializable {
         String name = nameField.getText();
         String email = emailField.getText();
         String phone = phoneField.getText();
-        selectedDate = ZonedDateTime.now();
+        Date selectedDate1 = dateFeild;
+
+        //selectedDate = ZonedDateTime.now();
 
         CalendarActivity appointment = new CalendarActivity(selectedDate, name, 0);
 
