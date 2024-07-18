@@ -17,6 +17,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * FXML Controller class
+ *
+ * @author group1
+ */
+
 public class RegisterController {
     @FXML
     private TextField firstNameField;

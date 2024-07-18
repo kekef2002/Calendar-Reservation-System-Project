@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author kekef
+ * @author group1
  */
 
 public class App extends Application {

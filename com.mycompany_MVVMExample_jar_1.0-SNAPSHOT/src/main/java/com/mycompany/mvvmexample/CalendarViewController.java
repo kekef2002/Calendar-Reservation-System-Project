@@ -30,6 +30,12 @@ import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * FXML Controller class
+ *
+ * @author group1
+ */
+
 public class CalendarViewController implements Initializable {
 
     ZonedDateTime dateFocus;

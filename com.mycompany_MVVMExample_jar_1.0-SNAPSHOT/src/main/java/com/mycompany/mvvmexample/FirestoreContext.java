@@ -15,6 +15,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.time.ZonedDateTime;
 
+/**
+ * FXML Controller class
+ *
+ * @author group1
+ */
+
 public class FirestoreContext {
 
     private static Firestore firestore;

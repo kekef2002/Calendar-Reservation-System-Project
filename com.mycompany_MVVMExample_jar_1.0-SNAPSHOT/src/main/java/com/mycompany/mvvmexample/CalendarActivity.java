@@ -4,6 +4,12 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
+ * FXML Controller class
+ *
+ * @author group1
+ */
+
+/**
  * Class representing a calendar activity (event).
  */
 public class CalendarActivity {
