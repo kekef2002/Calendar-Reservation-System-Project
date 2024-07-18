@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -16,10 +17,10 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="489.0" prefWidth="640.0" spacing="10" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.mvvmexample.RegisterController">
+<VBox alignment="CENTER" prefHeight="489.0" prefWidth="640.0" spacing="10" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.mvvmexample.RegisterController">
    <AnchorPane fx:id="signupBackground" prefHeight="489.0" prefWidth="640.0" style="-fx-background-color: White;">
       <children>
-         <Rectangle arcHeight="5.0" arcWidth="5.0" height="484.0" stroke="BLACK" strokeType="INSIDE" width="645.0">
+         <Rectangle arcHeight="5.0" arcWidth="5.0" height="489.0" stroke="BLACK" strokeType="INSIDE" width="645.0">
             <fill>
                <LinearGradient endX="0.5676959619952494" endY="0.7814726840855106" startX="1.0" startY="0.2755344418052256">
                   <stops>
@@ -57,14 +58,14 @@
             </children>
          </Group>
            
-              <Button fx:id="registerButton" layoutX="43.0" layoutY="431.0" prefHeight="29.0" prefWidth="559.0" style="-fx-background-color: black; -fx-text-fill: white; -fx-background-radius: 8;" text="Register" textFill="WHITE">
+              <Button fx:id="registerButton" layoutX="43.0" layoutY="372.0" prefHeight="29.0" prefWidth="559.0" style="-fx-background-color: black; -fx-text-fill: white; -fx-background-radius: 8;" text="Register" textFill="WHITE">
             <font>
                <Font name="Georgia" size="16.0" />
             </font>
          </Button>
          <Group layoutX="79.0" layoutY="145.0">
             <children>
-                 <TextField fx:id="emailField" layoutY="215.0" prefHeight="29.0" prefWidth="487.0" promptText="Email">
+                 <TextField fx:id="emailField" layoutY="178.0" prefHeight="29.0" prefWidth="487.0" promptText="Email">
                   <font>
                      <Font name="Georgia" size="16.0" />
                   </font>
@@ -74,28 +75,36 @@
                      <Font name="Georgia" size="16.0" />
                   </font>
                </TextField>
-                 <TextField fx:id="firstNameField" layoutX="1.0" layoutY="43.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.0" prefWidth="485.0" promptText="First Name">
+                 <TextField fx:id="firstNameField" layoutX="1.0" layoutY="36.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.0" prefWidth="485.0" promptText="First Name">
                   <font>
                      <Font name="Georgia" size="16.0" />
                   </font>
                </TextField>
-                 <PasswordField fx:id="passwordField" layoutX="1.0" layoutY="129.0" prefHeight="29.0" prefWidth="485.0" promptText="Password">
+                 <PasswordField fx:id="passwordField" layoutX="1.0" layoutY="108.0" prefHeight="29.0" prefWidth="485.0" promptText="Password">
                   <font>
                      <Font name="Georgia" size="16.0" />
                   </font>
                </PasswordField>
-                 <PasswordField fx:id="confirmPasswordField" layoutY="171.0" prefHeight="29.0" prefWidth="487.0" promptText="Confirm Password">
+                 <PasswordField fx:id="confirmPasswordField" layoutY="143.0" prefHeight="29.0" prefWidth="487.0" promptText="Confirm Password">
                   <font>
                      <Font name="Georgia" size="16.0" />
                   </font>
                </PasswordField>
-                 <TextField fx:id="lastNameField" layoutX="1.0" layoutY="87.0" prefHeight="29.0" prefWidth="485.0" promptText="Last Name">
+                 <TextField fx:id="lastNameField" layoutX="1.0" layoutY="72.0" prefHeight="29.0" prefWidth="485.0" promptText="Last Name">
                   <font>
                      <Font name="Georgia" size="16.0" />
                   </font>
                </TextField>
             </children>
          </Group>
+         <Button fx:id="signAccountButton" layoutX="43.0" layoutY="425.0" prefHeight="29.0" prefWidth="559.0" style="-fx-background-color: #EEEEEE; -fx-background-radius: 8; -fx-text-fill: #0A67F1;" text="Sign in with username">
+            <padding>
+               <Insets bottom="8.0" left="16.0" right="16.0" top="8.0" />
+            </padding>
+            <font>
+               <Font name="Georgia" size="16.0" />
+            </font>
+         </Button>
       </children>
    </AnchorPane>
 </VBox>
