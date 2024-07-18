@@ -47,6 +47,15 @@ Use the following Maven command to run the application:
 mvn javafx:run
 ```
 
+### Error check 
+
+Add the following JVM for any error related to Data/Time configuration and JavaFX 
+
+```sh
+--module-path (full path to JavaFX Library) --add-modules javafx.controls,javafx.fxml 
+--add-opens java.base/java.time=ALL-UNNAMED 
+```
+
 ## Usage
 
 ### Sign In

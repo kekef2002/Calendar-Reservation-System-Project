@@ -72,7 +72,7 @@ public class SigninController {
             Parent root = FXMLLoader.load(getClass().getResource("/com/mycompany/mvvmexample/" + fxml));
             Stage stage = new Stage();
             stage.setTitle(title);
-            stage.setScene(new Scene(root, 640, 480));
+            stage.setScene(new Scene(root));
             stage.show();
             closeWindow();
         } catch (Exception e) {

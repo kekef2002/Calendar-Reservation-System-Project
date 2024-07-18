@@ -24,7 +24,7 @@ public void start(Stage primaryStage) throws Exception {
 
     Parent root = FXMLLoader.load(getClass().getResource("Signin.fxml"));
     primaryStage.setTitle("Signin Page");
-    primaryStage.setScene(new Scene(root, 640, 480)); // Signin.fxml size
+    primaryStage.setScene(new Scene(root)); // Signin.fxml size
     primaryStage.show();
 }
 
