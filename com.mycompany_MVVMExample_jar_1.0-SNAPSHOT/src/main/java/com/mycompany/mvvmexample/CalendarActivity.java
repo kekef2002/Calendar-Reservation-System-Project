@@ -1,30 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.mvvmexample;
 
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- *
- * @author kekef
+ * Class representing a calendar activity (event).
  */
-
 public class CalendarActivity {
-//    private ZonedDateTime date;
+    private String date;
     private String clientName;
-    private Integer serviceNo;
-    private String date; // Store date as string in ISO-8601 format
-    
-    public CalendarActivity() {
-    }
-    
-    public CalendarActivity(ZonedDateTime date, String clientName, Integer serviceNo) {
+    private String notes;
+    private String user;
+    private String time;
+
+    public CalendarActivity() {}
+
+    public CalendarActivity(ZonedDateTime date, String clientName, String notes, String user, String time) {
         this.date = date != null ? date.format(DateTimeFormatter.ISO_ZONED_DATE_TIME) : null;
         this.clientName = clientName;
-        this.serviceNo = serviceNo;
+        this.notes = notes;
+        this.user = user;
+        this.time = time;
     }
 
     public String getDate() {
@@ -43,24 +39,42 @@ public class CalendarActivity {
         this.clientName = clientName;
     }
 
-    public Integer getServiceNo() {
-        return serviceNo;
+    public String getNotes() {
+        return notes;
     }
 
-    public void setServiceNo(Integer serviceNo) {
-        this.serviceNo = serviceNo;
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
-    
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
     public ZonedDateTime getZonedDateTime() {
         return date != null ? ZonedDateTime.parse(this.date, DateTimeFormatter.ISO_ZONED_DATE_TIME) : null;
     }
 
     @Override
     public String toString() {
-        return "CalenderActivity{" +
+        return "CalendarActivity{" +
                 "date=" + date +
                 ", clientName='" + clientName + '\'' +
-                ", serviceNo=" + serviceNo +
+                ", notes='" + notes + '\'' +
+                ", user='" + user + '\'' +
+                ", time='" + time + '\'' +
                 '}';
-    }    
+    }
 }

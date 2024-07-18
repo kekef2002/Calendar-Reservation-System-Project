@@ -2,18 +2,9 @@ package com.mycompany.mvvmexample;
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.DocumentReference;
-import java.net.URL;
-import java.time.ZonedDateTime;
-import java.util.*;
-
 import com.google.cloud.firestore.Firestore;
-import com.google.cloud.firestore.WriteResult;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
-import java.time.ZoneId;
-import java.util.concurrent.ExecutionException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,10 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -33,8 +21,16 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class CalendarViewController implements Initializable {
+import java.net.URL;
+import java.time.ZonedDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+import java.util.concurrent.ExecutionException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+public class CalendarViewController implements Initializable {
 
     ZonedDateTime dateFocus;
     ZonedDateTime today;
@@ -42,13 +38,11 @@ public class CalendarViewController implements Initializable {
     @FXML
     private TabPane mainTabPane, sideTabPane;
 
-    // tab fx id for main tab pane
     @FXML
-    private Tab calenderView,dashboard ;
+    private Tab calenderView, dashboard;
 
     @FXML
-    private Tab todayTab,menu,contactInfo, privacyPolicy;
-
+    private Tab todayTab, menu, contactInfo, privacyPolicy;
 
     @FXML
     private Text year;
@@ -62,8 +56,35 @@ public class CalendarViewController implements Initializable {
     @FXML
     private Button dashboardButton;
 
+    @FXML
+    private TextField nameField;
+
+    @FXML
+    private TextField emailField;
+
+    @FXML
+    private TextField phoneField;
+
+    @FXML
+    private DatePicker dateField;
+
+    @FXML
+    private TextField timeField;
+
+    @FXML
+    private TextArea notesField;
+
+    @FXML
+    private Button confirmAppointmentButton;
+
+    private Firestore db;
+    private String loggedInUser;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        FirestoreContext firestoreContext = new FirestoreContext();
+        db = firestoreContext.getFirestore();
+        loggedInUser = "sampleUser"; // Replace this with actual user retrieval logic
         dateFocus = ZonedDateTime.now();
         today = ZonedDateTime.now();
         try {
@@ -157,7 +178,7 @@ public class CalendarViewController implements Initializable {
                 break;
             }
             CalendarActivity activity = calendarActivities.get(k);
-            Text text = new Text(activity.getClientName() + ", " + activity.getZonedDateTime().toLocalTime());
+            Text text = new Text(activity.getClientName() + ", " + activity.getTime()); // Display time as string
             text.getStyleClass().add("text");
             calendarActivityBox.getChildren().add(text);
             text.setOnMouseClicked(mouseEvent -> {
@@ -178,13 +199,11 @@ public class CalendarViewController implements Initializable {
             if (zonedDateTime != null) {
                 int activityDate = zonedDateTime.getDayOfMonth();
                 if (!calendarActivityMap.containsKey(activityDate)) {
-                    calendarActivityMap.put(activityDate, List.of(activity));
+                    calendarActivityMap.put(activityDate, new ArrayList<>(List.of(activity)));
                 } else {
                     List<CalendarActivity> oldListByDate = calendarActivityMap.get(activityDate);
-
-                    List<CalendarActivity> newList = new ArrayList<>(oldListByDate);
-                    newList.add(activity);
-                    calendarActivityMap.put(activityDate, newList);
+                    oldListByDate.add(activity);
+                    calendarActivityMap.put(activityDate, oldListByDate);
                 }
             } else {
                 System.err.println("CalendarActivity has null date: " + activity);
@@ -199,16 +218,27 @@ public class CalendarViewController implements Initializable {
         Firestore db = firestoreContext.getFirestore();
 
         try {
-            ApiFuture<QuerySnapshot> future = db.collection("appointments").get();
+            ApiFuture<QuerySnapshot> future = db.collection("appointments")
+                                                .whereEqualTo("user", loggedInUser)
+                                                .get();
             List<QueryDocumentSnapshot> documents = future.get().getDocuments();
 
             for (QueryDocumentSnapshot document : documents) {
-                CalendarActivity activity = document.toObject(CalendarActivity.class);
-                if (activity.getDate() != null) {
-                    calendarActivities.add(activity);
-                } else {
-                    System.err.println("Document with ID " + document.getId() + " has null date field.");
-                }
+                Map<String, Object> data = document.getData();
+                String date = (String) data.get("date");
+                String clientName = (String) data.get("clientName");
+                String notes = (String) data.get("notes");
+                String user = (String) data.get("user");
+                String time = (String) data.get("time");
+
+                CalendarActivity activity = new CalendarActivity(
+                    ZonedDateTime.parse(date, DateTimeFormatter.ISO_ZONED_DATE_TIME),
+                    clientName,
+                    notes,
+                    user,
+                    time
+                );
+                calendarActivities.add(activity);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -240,51 +270,24 @@ public class CalendarViewController implements Initializable {
         stage.close();
     }
 
-    /**
-     * Dashboard page methods and Initialized fields
-     */
-
-    @FXML
-    private TextField nameField;
-
-    @FXML
-    private TextField emailField;
-
-    @FXML
-    private TextField phoneField;
-
-    @FXML
-    private Date dateFeild; // Date selection
-
-
-    @FXML
-    private Button confirmAppointmentButton;
-
-    private ZonedDateTime selectedDate;
-
-//    public void setSelectedDate(ZonedDateTime selectedDate) {
-//        this.selectedDate = selectedDate;
-//    }
-
-    @FXML
-    private void initialize() {
-
-    }
-
-        private void confirmAppointment() {
+    private void confirmAppointment() {
         String name = nameField.getText();
         String email = emailField.getText();
         String phone = phoneField.getText();
-        Date selectedDate1 = dateFeild;
+        ZonedDateTime selectedDate = dateField.getValue().atStartOfDay(ZoneId.systemDefault());
+        String notes = notesField.getText();
+        String time = timeField.getText();
 
-        //selectedDate = ZonedDateTime.now();
+        CalendarActivity appointment = new CalendarActivity(selectedDate, name, notes, loggedInUser, time);
 
-        CalendarActivity appointment = new CalendarActivity(selectedDate, name, 0);
+        Map<String, Object> appointmentData = new HashMap<>();
+        appointmentData.put("date", appointment.getDate());
+        appointmentData.put("clientName", appointment.getClientName());
+        appointmentData.put("notes", appointment.getNotes());
+        appointmentData.put("user", appointment.getUser());
+        appointmentData.put("time", appointment.getTime());
 
-        FirestoreContext firestoreContext = new FirestoreContext();
-        Firestore db = firestoreContext.getFirestore();
-
-        ApiFuture<DocumentReference> future = db.collection("appointments").add(appointment);
+        ApiFuture<DocumentReference> future = db.collection("appointments").add(appointmentData);
         try {
             future.get();
             System.out.println("Appointment saved successfully!");
@@ -293,8 +296,6 @@ public class CalendarViewController implements Initializable {
             e.printStackTrace();
         }
     }
-
-
 
     @FXML
     private void navigateToCalendarView() {
@@ -308,7 +309,6 @@ public class CalendarViewController implements Initializable {
             e.printStackTrace();
         }
     }
-
 
     public void menuButton(ActionEvent actionEvent) {
         sideTabPane.getSelectionModel().select(menu);
